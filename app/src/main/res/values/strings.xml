@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">SubmissionFundamentalSatu</string>
+    <string name="username">Username</string>
+    <string name="searchUser">Cari Pengguna</string>
+    <string name="usernameDetail">Username</string>
+    <string name="follower">Follower</string>
+    <string name="following">Following</string>
+    <string name="username2">username2</string>
+    <string name="dtFollower">200</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="follower_page">This is Follower Page</string>
+    <string name="following_page">This is Following Page</string>
+    <string name="tab_follower">Follower</string>
+    <string name="tab_following">Following</string>
+    <string name="tab_text_3">Setting</string>
+    <string name="github_user">Github User</string>
+</resources>
