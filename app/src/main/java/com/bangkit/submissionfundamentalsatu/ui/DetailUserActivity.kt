@@ -1,11 +1,8 @@
 package com.bangkit.submissionfundamentalsatu.ui
 
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
@@ -15,7 +12,6 @@ import com.bangkit.submissionfundamentalsatu.databinding.ActivityDetailUserBindi
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import de.hdodenhof.circleimageview.CircleImageView
 
 class DetailUserActivity : AppCompatActivity() {
 
@@ -35,7 +31,7 @@ class DetailUserActivity : AppCompatActivity() {
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
+        val detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailViewModel::class.java]
 
         val userDetail = intent.getStringExtra(KEY_USER)
         detailViewModel.detailUser(userDetail.toString())

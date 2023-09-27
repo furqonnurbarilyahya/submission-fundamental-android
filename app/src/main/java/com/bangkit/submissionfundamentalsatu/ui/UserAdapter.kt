@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.submissionfundamentalsatu.data.response.DetailUserResponse
 import com.bangkit.submissionfundamentalsatu.data.response.ItemsItem
 import com.bangkit.submissionfundamentalsatu.databinding.ItemRowUserBinding
 import com.bumptech.glide.Glide

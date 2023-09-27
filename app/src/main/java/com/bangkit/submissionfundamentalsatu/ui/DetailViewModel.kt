@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bangkit.submissionfundamentalsatu.data.response.DetailUserResponse
-import com.bangkit.submissionfundamentalsatu.data.response.GithubResponse
 import com.bangkit.submissionfundamentalsatu.data.response.ItemsItem
 import com.bangkit.submissionfundamentalsatu.data.retrofit.ApiConfig
 import retrofit2.Call
@@ -21,7 +20,7 @@ class DetailViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _detailUser = MutableLiveData<DetailUserResponse>()
+    private val _detailUser = MutableLiveData<DetailUserResponse> ()
     val detailUser: LiveData<DetailUserResponse> = _detailUser
 
     private val _followers = MutableLiveData<List<ItemsItem>>()
@@ -45,16 +44,16 @@ class DetailViewModel : ViewModel() {
                 response: Response<DetailUserResponse>
             ) {
                 _isLoading.value = false
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     _detailUser.value = response.body()
                 } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
+                    Log.e(TAG, "On failure: ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message}")
+                Log.e(TAG, "onFalure: ${t.message}")
             }
 
         })
