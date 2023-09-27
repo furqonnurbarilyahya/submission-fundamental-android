@@ -32,8 +32,8 @@ class DetailViewModel : ViewModel() {
 
     init {
         detailUser()
-//        getFollowers()
-//        getFollowing()
+        getFollowers()
+        getFollowing()
     }
 
     fun detailUser (username: String = "") {
