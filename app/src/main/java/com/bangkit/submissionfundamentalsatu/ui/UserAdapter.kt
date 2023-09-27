@@ -11,7 +11,7 @@ import com.bangkit.submissionfundamentalsatu.databinding.ItemRowUserBinding
 import com.bumptech.glide.Glide
 
 class UserAdapter: ListAdapter<ItemsItem, UserAdapter.ViewHolder>(DIFF_CALLBACK) {
-    class ViewHolder(var binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private var binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind (user: ItemsItem) {
             binding.tvUsername.text = user.login
             Glide.with(itemView.context)
@@ -43,7 +43,7 @@ class UserAdapter: ListAdapter<ItemsItem, UserAdapter.ViewHolder>(DIFF_CALLBACK)
 
         holder.itemView.setOnClickListener {
             val intentDetail = Intent(holder.itemView.context, DetailUserActivity::class.java)
-            intentDetail.putExtra("key_user", user.login)
+            intentDetail.putExtra(DetailUserActivity.KEY_USER, user.login)
             holder.itemView.context.startActivity(intentDetail)
         }
     }
