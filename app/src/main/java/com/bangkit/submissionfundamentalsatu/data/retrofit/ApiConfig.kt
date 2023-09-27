@@ -1,5 +1,6 @@
 package com.bangkit.submissionfundamentalsatu.data.retrofit
 
+import com.bangkit.submissionfundamentalsatu.BuildConfig.token
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -11,7 +12,7 @@ class ApiConfig {
             val authInterceptor = Interceptor { chain ->
                 val req = chain.request()
                 val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", "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")
+                    .addHeader("Authorization", "token $token")
                     .build()
                 chain.proceed(requestHeaders)
             }
