@@ -33,7 +33,7 @@ class FollowerFragment : Fragment() {
         Log.d("arguments: position", position.toString())
         Log.d("arguments: username", username.toString())
 
-        val detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
+        val detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowViewModel::class.java]
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvFollowers.layoutManager = LinearLayoutManager(requireActivity())
 
