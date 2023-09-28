@@ -8,12 +8,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:background="@color/purple_light"
+            android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_detail"
@@ -113,28 +114,26 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="300dp"
                 android:background="?attr/colorPrimary"
-                app:tabTextColor="?attr/colorPrimary"
-                app:tabBackground="@color/white"
                 android:contentDescription="@string/follower_page"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_usernameDetail2"
-                app:layout_constraintVertical_bias="0.022"/>
+                app:layout_constraintVertical_bias="0.022"
+                app:tabBackground="@color/white"
+                android:backgroundTint="@color/white"
+                app:tabTextColor="?attr/colorPrimary" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
-                android:layout_width="384dp"
-                android:layout_height="600dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="539dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tabs">
 
@@ -149,6 +148,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginTop="15dp"
+                android:foregroundGravity="bottom"
+                app:fabSize="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/baseline_star_border_36" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
