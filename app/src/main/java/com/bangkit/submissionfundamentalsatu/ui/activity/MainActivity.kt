@@ -1,24 +1,25 @@
-package com.bangkit.submissionfundamentalsatu.ui
+package com.bangkit.submissionfundamentalsatu.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.submissionfundamentalsatu.data.response.ItemsItem
 import com.bangkit.submissionfundamentalsatu.databinding.ActivityMainBinding
+import com.bangkit.submissionfundamentalsatu.ui.viewModel.MainViewModel
+import com.bangkit.submissionfundamentalsatu.adapter.UserAdapter
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvUsers.layoutManager = layoutManager

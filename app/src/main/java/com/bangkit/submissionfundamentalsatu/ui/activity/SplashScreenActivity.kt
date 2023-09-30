@@ -1,4 +1,4 @@
-package com.bangkit.submissionfundamentalsatu.ui
+package com.bangkit.submissionfundamentalsatu.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

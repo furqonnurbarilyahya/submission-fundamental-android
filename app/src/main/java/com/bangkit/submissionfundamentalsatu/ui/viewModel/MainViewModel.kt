@@ -1,4 +1,4 @@
-package com.bangkit.submissionfundamentalsatu.ui
+package com.bangkit.submissionfundamentalsatu.ui.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData

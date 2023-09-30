@@ -1,4 +1,4 @@
-package com.bangkit.submissionfundamentalsatu.ui
+package com.bangkit.submissionfundamentalsatu.ui.activity
 
 import android.os.Bundle
 import android.util.Log
@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.submissionfundamentalsatu.R
 import com.bangkit.submissionfundamentalsatu.data.response.ItemsItem
 import com.bangkit.submissionfundamentalsatu.databinding.FragmentFollowerBinding
+import com.bangkit.submissionfundamentalsatu.ui.viewModel.FollowViewModel
+import com.bangkit.submissionfundamentalsatu.adapter.UserAdapter
 
-class FollowerFragment : Fragment() {
+class FollowerFollowingFragment : Fragment() {
 
     private lateinit var binding: FragmentFollowerBinding
 

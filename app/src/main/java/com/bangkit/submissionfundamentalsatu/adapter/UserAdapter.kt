@@ -1,4 +1,4 @@
-package com.bangkit.submissionfundamentalsatu.ui
+package com.bangkit.submissionfundamentalsatu.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.submissionfundamentalsatu.data.response.ItemsItem
 import com.bangkit.submissionfundamentalsatu.databinding.ItemRowUserBinding
+import com.bangkit.submissionfundamentalsatu.ui.activity.DetailUserActivity
 import com.bumptech.glide.Glide
 
 class UserAdapter: ListAdapter<ItemsItem, UserAdapter.ViewHolder>(DIFF_CALLBACK) {

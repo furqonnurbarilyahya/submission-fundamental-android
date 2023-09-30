@@ -1,16 +1,20 @@
-package com.bangkit.submissionfundamentalsatu.ui
+package com.bangkit.submissionfundamentalsatu.ui.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bangkit.submissionfundamentalsatu.data.response.DetailUserResponse
 import com.bangkit.submissionfundamentalsatu.data.retrofit.ApiConfig
+import com.bangkit.submissionfundamentalsatu.data.source.UserRepository
+import com.bangkit.submissionfundamentalsatu.database.entity.UserEntity
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel (private val mUserRepository: UserRepository) : ViewModel() {
 
     companion object {
         private const val TAG = "DetailViewModel"
@@ -48,5 +52,21 @@ class DetailViewModel : ViewModel() {
             }
 
         })
+    }
+
+    fun insertFavoriteUser(userEntity: UserEntity) {
+        viewModelScope.launch {
+            mUserRepository.insertFavoriteUser(userEntity)
+        }
+    }
+
+    fun deleteFavoriteUser(username: String) {
+        viewModelScope.launch {
+            mUserRepository.deleteFavoriteUser(username)
+        }
+    }
+
+    fun isFavoriteUser(username: String): LiveData<Boolean> {
+        return mUserRepository.isFavoriteUser(username)
     }
 }
