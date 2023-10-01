@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SubmissionFundamentalSatu</string>
+    <string name="app_name">SubmissionFundamental</string>
     <string name="username">Username</string>
     <string name="searchUser">Cari Pengguna</string>
     <string name="usernameDetail">Username</string>
@@ -15,4 +15,8 @@
     <string name="tab_following">Following</string>
     <string name="tab_text_3">Setting</string>
     <string name="github_user">Github User</string>
+    <string name="menu_favorite">Menu Favorite</string>
+    <string name="settings">Settings</string>
+    <string name="nothing">Anda Belum Menambahkan Favorite</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>
