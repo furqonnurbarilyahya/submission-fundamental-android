@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.submissionfundamentalsatu.adapter.UserAdapter
 import com.bangkit.submissionfundamentalsatu.data.response.ItemsItem
 import com.bangkit.submissionfundamentalsatu.databinding.ActivityFavoriteUserBinding
 import com.bangkit.submissionfundamentalsatu.ui.viewModel.FavoriteUserViewModel
+import com.bangkit.submissionfundamentalsatu.ui.viewModel.SettingViewModel
 import com.bangkit.submissionfundamentalsatu.ui.viewModel.ViewModelFactory
 
 class FavoriteUserActivity : AppCompatActivity() {
@@ -17,6 +19,12 @@ class FavoriteUserActivity : AppCompatActivity() {
     private val favoriteUserViewModel by viewModels<FavoriteUserViewModel>{
         ViewModelFactory.getInstance(application)
     }
+
+    private val settingViewModel by viewModels<SettingViewModel>() {
+        ViewModelFactory.getInstance(application)
+    }
+
+    private var themeNow = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFavoriteUserBinding.inflate(layoutInflater)
@@ -36,6 +44,17 @@ class FavoriteUserActivity : AppCompatActivity() {
                 items.add(item)
             }
             setFavoriteUserData(items)
+        }
+
+        settingViewModel.getThemeSetting().observe(this) {theme ->
+            themeNow = theme
+            val currentTheme = if (theme) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
+
+            AppCompatDelegate.setDefaultNightMode(currentTheme)
         }
     }
 

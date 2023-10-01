@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.viewpager2.widget.ViewPager2
 import com.bangkit.submissionfundamentalsatu.R
 import com.bangkit.submissionfundamentalsatu.data.response.DetailUserResponse
@@ -12,6 +13,7 @@ import com.bangkit.submissionfundamentalsatu.databinding.ActivityDetailUserBindi
 import com.bangkit.submissionfundamentalsatu.ui.viewModel.DetailViewModel
 import com.bangkit.submissionfundamentalsatu.adapter.SectionsPagerAdapter
 import com.bangkit.submissionfundamentalsatu.database.entity.UserEntity
+import com.bangkit.submissionfundamentalsatu.ui.viewModel.SettingViewModel
 import com.bangkit.submissionfundamentalsatu.ui.viewModel.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
@@ -27,6 +29,11 @@ class DetailUserActivity : AppCompatActivity() {
     private var favoriteUser: UserEntity? = null
     private var isFavorite: Boolean = false
 
+    private val settingViewModel by viewModels<SettingViewModel>() {
+        ViewModelFactory.getInstance(application)
+    }
+
+    private var themeNow = false
 
     companion object {
         const val KEY_USERNAME = "key_user"
@@ -88,6 +95,17 @@ class DetailUserActivity : AppCompatActivity() {
         }.attach()
 
         supportActionBar?.elevation = 0f
+
+        settingViewModel.getThemeSetting().observe(this) {theme ->
+            themeNow = theme
+            val currentTheme = if (theme) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
+
+            AppCompatDelegate.setDefaultNightMode(currentTheme)
+        }
 
     }
 
