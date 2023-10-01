@@ -43,8 +43,10 @@ class FollowerFollowingFragment : Fragment() {
         }
 
         if (position == 1) {
-            binding.progressBar.visibility = View.INVISIBLE
             username?.let { detailViewModel.getFollowers(it) }
+            detailViewModel.isLoading.observe(viewLifecycleOwner) {
+                showLoading(it)
+            }
             detailViewModel.followers.observe(viewLifecycleOwner) {
                 setUserData(it)
             }
