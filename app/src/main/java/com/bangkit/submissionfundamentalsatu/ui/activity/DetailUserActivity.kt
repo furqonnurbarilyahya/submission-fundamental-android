@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.viewpager2.widget.ViewPager2
 import com.bangkit.submissionfundamentalsatu.R
 import com.bangkit.submissionfundamentalsatu.data.response.DetailUserResponse
@@ -18,7 +17,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class DetailUserActivity : AppCompatActivity(), View.OnClickListener {
+class DetailUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailUserBinding
     private val detailViewModel by viewModels<DetailViewModel>() {
@@ -32,7 +31,8 @@ class DetailUserActivity : AppCompatActivity(), View.OnClickListener {
 
 
     companion object {
-        const val KEY_USER = "key_user"
+        const val KEY_USERNAME = "key_user"
+        const val KEY_AVATAR = "key_avatar"
         @StringRes
         private val TAB_TITLES = intArrayOf(
             R.string.tab_follower,
@@ -45,7 +45,8 @@ class DetailUserActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userDetail = intent.getStringExtra(KEY_USER)
+        val userDetail = intent.getStringExtra(KEY_USERNAME)
+        val userAvatar = intent.getStringExtra(KEY_AVATAR)
         detailViewModel.detailUser(userDetail.toString())
         detailViewModel.detailUser.observe(this) { user ->
             setDetailUser(user)
@@ -55,12 +56,29 @@ class DetailUserActivity : AppCompatActivity(), View.OnClickListener {
             showLoading(it)
         }
 
+        detailViewModel.isFavoriteUser(userDetail.toString()).observe(this) { favuser ->
+            setFavoriteUser(favuser)
+            isFavorite = favuser
+        }
+
         favoriteUser.let {
             favoriteUser?.username.toString()
             favoriteUser?.avatarUrl.toString()
         }
 
-        binding.fabAddFavorite.setOnClickListener(this)
+        binding.fabAddFavorite.setOnClickListener{
+                    if (isFavorite) {
+                        setFavoriteUser(false)
+                        detailViewModel.deleteFavoriteUser(userDetail.toString())
+                    } else {
+                        setFavoriteUser(true)
+                        favoriteUser = UserEntity(
+                            username = userDetail.toString(),
+                            avatarUrl = userAvatar.toString()
+                        )
+                        detailViewModel.insertFavoriteUser(favoriteUser as UserEntity)
+                    }
+                }
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this)
         sectionsPagerAdapter.username = userDetail!!
@@ -94,28 +112,9 @@ class DetailUserActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setFavoriteUser(favoriteUser: Boolean) {
         if (favoriteUser) {
-            binding.fabAddFavorite.setImageResource(R.drawable.baseline_star_border_36)
-        } else {
             binding.fabAddFavorite.setImageResource(R.drawable.baseline_star_24)
+        } else {
+            binding.fabAddFavorite.setImageResource(R.drawable.baseline_star_border_36)
         }
     }
-
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.fab_add_favorite -> {
-                if (isFavorite) {
-                    setFavoriteUser(false)
-                    detailViewModel.deleteFavoriteUser(username.toString())
-                } else {
-                    setFavoriteUser(true)
-                    favoriteUser = UserEntity(
-                        username = username.toString(),
-                        avatarUrl = avatarUrl.toString()
-                    )
-                    detailViewModel.insertFavoriteUser(favoriteUser as UserEntity)
-                }
-            }
-        }
-    }
-
 }
