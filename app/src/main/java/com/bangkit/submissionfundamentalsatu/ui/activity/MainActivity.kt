@@ -1,5 +1,6 @@
 package com.bangkit.submissionfundamentalsatu.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,6 +11,7 @@ import com.bangkit.submissionfundamentalsatu.data.response.ItemsItem
 import com.bangkit.submissionfundamentalsatu.databinding.ActivityMainBinding
 import com.bangkit.submissionfundamentalsatu.ui.viewModel.MainViewModel
 import com.bangkit.submissionfundamentalsatu.adapter.UserAdapter
+import com.bangkit.submissionfundamentalsatu.ui.viewModel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +35,16 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.isLoading.observe(this) {
             showLoading(it)
+        }
+
+        binding.fabFavorite.setOnClickListener{
+            val favoriteIntent = Intent(this, FavoriteUserActivity::class.java)
+            startActivity(favoriteIntent)
+        }
+
+        binding.fabSettings.setOnClickListener{
+            val settingIntent = Intent(this, SettingActivity::class.java)
+            startActivity(settingIntent)
         }
 
         with(binding) {
