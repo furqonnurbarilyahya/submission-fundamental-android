@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.submissionfundamentalsatu.adapter.UserAdapter
 import com.bangkit.submissionfundamentalsatu.data.response.ItemsItem

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.viewpager2.widget.ViewPager2
 import com.bangkit.submissionfundamentalsatu.R
 import com.bangkit.submissionfundamentalsatu.data.response.DetailUserResponse
@@ -13,7 +12,6 @@ import com.bangkit.submissionfundamentalsatu.databinding.ActivityDetailUserBindi
 import com.bangkit.submissionfundamentalsatu.ui.viewModel.DetailViewModel
 import com.bangkit.submissionfundamentalsatu.adapter.SectionsPagerAdapter
 import com.bangkit.submissionfundamentalsatu.database.entity.UserEntity
-import com.bangkit.submissionfundamentalsatu.ui.viewModel.SettingViewModel
 import com.bangkit.submissionfundamentalsatu.ui.viewModel.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
