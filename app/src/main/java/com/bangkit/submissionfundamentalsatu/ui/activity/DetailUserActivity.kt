@@ -24,8 +24,6 @@ class DetailUserActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(application)
     }
 
-    private var username: String? = ""
-    private var avatarUrl: String? = ""
     private var favoriteUser: UserEntity? = null
     private var isFavorite: Boolean = false
 
@@ -108,13 +106,14 @@ class DetailUserActivity : AppCompatActivity() {
         binding.tvFollower.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
         binding.tvFollowing.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
         binding.tabs.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
+        binding.fabAddFavorite.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
     }
 
     private fun setFavoriteUser(favoriteUser: Boolean) {
         if (favoriteUser) {
-            binding.fabAddFavorite.setImageResource(R.drawable.baseline_star_24)
+            binding.fabAddFavorite.setImageResource(R.drawable.ic_favorite_fullsolid)
         } else {
-            binding.fabAddFavorite.setImageResource(R.drawable.baseline_star_border_36)
+            binding.fabAddFavorite.setImageResource(R.drawable.ic_favorite_border)
         }
     }
 }
