@@ -19,11 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val mainViewModel: MainViewModel by viewModels()
-    private val settingViewModel by viewModels<SettingViewModel>() {
-        ViewModelFactory.getInstance(application)
-    }
-
-    private var themeNow = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,17 +59,6 @@ class MainActivity : AppCompatActivity() {
                     mainViewModel.searchUser(searchView.text.toString())
                     false
                 }
-        }
-
-        settingViewModel.getThemeSetting().observe(this) {theme ->
-            themeNow = theme
-            val currentTheme = if (theme) {
-                AppCompatDelegate.MODE_NIGHT_YES
-            } else {
-                AppCompatDelegate.MODE_NIGHT_NO
-            }
-
-            AppCompatDelegate.setDefaultNightMode(currentTheme)
         }
 
     }

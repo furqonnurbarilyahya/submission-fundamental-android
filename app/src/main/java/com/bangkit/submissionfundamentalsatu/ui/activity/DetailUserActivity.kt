@@ -29,12 +29,6 @@ class DetailUserActivity : AppCompatActivity() {
     private var favoriteUser: UserEntity? = null
     private var isFavorite: Boolean = false
 
-    private val settingViewModel by viewModels<SettingViewModel>() {
-        ViewModelFactory.getInstance(application)
-    }
-
-    private var themeNow = false
-
     companion object {
         const val KEY_USERNAME = "key_user"
         const val KEY_AVATAR = "key_avatar"
@@ -95,17 +89,6 @@ class DetailUserActivity : AppCompatActivity() {
         }.attach()
 
         supportActionBar?.elevation = 0f
-
-        settingViewModel.getThemeSetting().observe(this) {theme ->
-            themeNow = theme
-            val currentTheme = if (theme) {
-                AppCompatDelegate.MODE_NIGHT_YES
-            } else {
-                AppCompatDelegate.MODE_NIGHT_NO
-            }
-
-            AppCompatDelegate.setDefaultNightMode(currentTheme)
-        }
 
     }
 
