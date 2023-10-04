@@ -27,16 +27,6 @@ class DetailUserActivity : AppCompatActivity() {
     private var favoriteUser: UserEntity? = null
     private var isFavorite: Boolean = false
 
-    companion object {
-        const val KEY_USERNAME = "key_user"
-        const val KEY_AVATAR = "key_avatar"
-        @StringRes
-        private val TAB_TITLES = intArrayOf(
-            R.string.tab_follower,
-            R.string.tab_following
-        )
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
@@ -114,5 +104,15 @@ class DetailUserActivity : AppCompatActivity() {
         } else {
             binding.fabAddFavorite.setImageResource(R.drawable.ic_favorite_border)
         }
+    }
+
+    companion object {
+        const val KEY_USERNAME = "key_user"
+        const val KEY_AVATAR = "key_avatar"
+        @StringRes
+        private val TAB_TITLES = intArrayOf(
+            R.string.tab_follower,
+            R.string.tab_following
+        )
     }
 }

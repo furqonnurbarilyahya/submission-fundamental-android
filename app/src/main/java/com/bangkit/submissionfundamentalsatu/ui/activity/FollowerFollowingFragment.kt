@@ -17,14 +17,6 @@ class FollowerFollowingFragment : Fragment() {
 
     private lateinit var binding: FragmentFollowerBinding
 
-    companion object {
-        const val ARG_USERNAME = "username"
-        const val ARG_POSITON = "position"
-
-    }
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var username = arguments?.getString(ARG_USERNAME)
@@ -78,6 +70,12 @@ class FollowerFollowingFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    companion object {
+        const val ARG_USERNAME = "username"
+        const val ARG_POSITON = "position"
+
     }
 
 }
