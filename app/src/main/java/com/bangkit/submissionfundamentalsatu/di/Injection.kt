@@ -9,7 +9,6 @@ object Injection {
     fun provideRepository(context: Context): UserRepository {
         val database = FavoriteUserDatabase.getInstance(context)
         val dao = database.favoriteUserDao()
-//        val appExecutors = AppExecutors()
         return UserRepository.getInstance(dao)
     }
 }
