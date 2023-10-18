@@ -1,5 +1,6 @@
 package com.bangkit.submissionfundamentalsatu.data.retrofit
 
+import com.bangkit.submissionfundamentalsatu.BuildConfig
 import com.bangkit.submissionfundamentalsatu.BuildConfig.token
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -20,7 +21,7 @@ class ApiConfig {
                 .addInterceptor(authInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
+                .baseUrl(BuildConfig.url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
